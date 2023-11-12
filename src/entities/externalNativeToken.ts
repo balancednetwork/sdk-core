@@ -1,7 +1,7 @@
 import { Token } from './token';
 
 /**
- * Represents a pseudo ERC20 token that is a native token on another chain.
+ * Represents a pseudo ERC20 token that is a native token on another chain. Address represents a token route to the native token.
  */
 export class ExternalNativeToken extends Token {
   public readonly isExternalNative: true = true;
@@ -13,6 +13,7 @@ export class ExternalNativeToken extends Token {
 
   public constructor(
     chain: string,
+    address: string,
     chainId: number,
     decimals: number,
     symbol: string,
@@ -20,7 +21,7 @@ export class ExternalNativeToken extends Token {
     logoURI?: string,
     searchableTerms?: string,
   ) {
-    super(chainId, '', decimals, symbol, name, searchableTerms);
+    super(chainId, address, decimals, symbol, name, searchableTerms);
     this.chain = chain;
     this.logoURI = logoURI;
   }
